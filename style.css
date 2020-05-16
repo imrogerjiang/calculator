@@ -1,9 +1,133 @@
 :root{
-    --bg-color: #F1FAEE;
-    --light-fg-color: #a8dadc;
-    --light-text-color: #1D3557;
-    --dark-fg-color: #457b9d;
-    --dark-text-color: #F1FAEE;
+    /* Colors:
+    #E63946
+    #F1FAEE
+    #a8dadc
+    #457b9d
+    #1D3557
+    */
+
+    --calc-bg-color: #F1FAEE;
+    --display-text-color: #1D3557;
+    --display-bg-color: #ffffff;
+    --button-bg-color: #a8dadc;
+    --button-text-color: #1D3557;
+    --special-bg-color: #457b9d;
+    --special-text-color: #F1FAEE;
+    --equals-bg-color: #1D3557;
+    --equals-text-color:#F1FAEE;
+
+    --bg-color: #a8dadc;
     --border-color: #1D3557;
     --highlight-color: #E63946;
+    --footer-text-color: #F1FAEE;
+    
+}
+
+/* IDs */
+#calculator{
+    height: 550px;
+    width: 1100px;
+
+    display: grid;
+    grid-template: repeat(5, 1fr) / 7fr repeat(4, 1fr);
+    gap: 30px;
+
+    padding: 90px 60px 90px 60px;
+    border: 5px solid var(--border-color);
+    border-radius: 40px;
+    margin: 70px auto 70px auto;
+    background-color: var(--calc-bg-color);
+}
+#calculator:hover{
+    border-color: var(--highlight-color);
+}
+#display{
+    height: 95%;
+    width: 95%; /* Changes the spacing between display and buttons */
+        
+    grid-row:1/2;
+
+    display: flex;
+    align-items: center;
+
+    background-color: var(--display-bg-color);
+    border: 3px solid var(--border-color);
+}
+#display:hover{
+    border-color: var(--highlight-color);
+}
+#display p{
+    color: var(--display-text-color);
+    font: 35px "Varela Round", sans-serif;
+    width: 95%; /* Changes the spacing between text and right display edge */
+    margin: 0;
+    text-align: right;
+}
+#title{
+    font:120px "Lobster", cursive;
+    color: var(--border-color);
+    grid-row:2/6;
+    grid-column:1/2;
+    align-self: end;
+}
+#title:hover{
+    color: var(--highlight-color);
+}
+
+#equals{
+    grid-column:4/6;
+}
+
+/* Classes */
+.button{
+    font: 25px "Varela Round", sans-serif;
+
+    color: var(--button-text-color);
+    background-color: var(--button-bg-color);
+
+    cursor: pointer;
+
+    border: 3px solid var(--border-color);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.button:hover{
+    filter:brightness(1.1);
+    border-color: var(--highlight-color);
+}
+.specialButton{
+    color: var(--special-text-color);
+    background-color: var(--special-bg-color);
+}
+.specialButton:hover{
+    filter: brightness(1.2);
+}
+.equalsButton{
+    color: var(--equals-text-color);
+    background-color: var(--equals-bg-color);
+}
+.equalsButton:hover{
+    filter: brightness(1);
+    background-color: var(--highlight-color);
+}
+
+
+/* Tags */
+body{
+    padding: 0;
+    background-color: var(--bg-color);
+    text-align: center;
+}
+footer{
+    font: 20px "Varela Round", sans-serif;
+    color: var(--footer-text-color);
+}
+footer a{
+    color: var(--footer-text-color);
+}
+footer a:hover{
+    color: var(--highlight-color);
 }
