@@ -39,9 +39,6 @@
     margin: 70px auto 70px auto;
     background-color: var(--calc-bg-color);
 }
-#calculator:hover{
-    border-color: var(--highlight-color);
-}
 #display{
     height: 95%;
     width: 95%; /* Changes the spacing between display and buttons */
@@ -75,10 +72,6 @@
     color: var(--highlight-color);
 }
 
-#equals{
-    grid-column:4/6;
-}
-
 /* Classes */
 .button{
     font: 25px "Varela Round", sans-serif;
@@ -108,6 +101,7 @@
 .equalsButton{
     color: var(--equals-text-color);
     background-color: var(--equals-bg-color);
+    grid-column: 4/6;
 }
 .equalsButton:hover{
     filter: brightness(1);
