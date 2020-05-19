@@ -1,5 +1,4 @@
 // TODO
-//  - Highlight display text on calculation
 //  - Add keyboard support
 //  - Test bugs
 
@@ -9,7 +8,6 @@ function displayShow(str) {
     } else {
         display.textContent = str.substring(0, str.indexOf(".") + 4);
     }
-    
 }
 
 function print(str){
@@ -20,7 +18,7 @@ function print(str){
 }
 
 function numerical(){
-    const n = this.dataset.payload;
+    const n = this.dataset.key;
     
     // add n to the input string
     if(calc.calculated) {
@@ -38,7 +36,7 @@ function numerical(){
 }
 
 function operator(){
-    const operator = this.dataset.payload;
+    const operator = this.dataset.key;
 
     // Toggles minus at the start of the number
     if(operator == "-" && !calc.isTyping()){
@@ -90,6 +88,7 @@ function compute() {
     calc.curN = String(ans);
     calc.ans = String(ans);
     displayShow(calc.curN);
+    display.classList.add("displayHighlight");
     calc.calculated = true;
 
     // print("compute");
@@ -144,11 +143,37 @@ function clicked(e){
     fn.apply(this);
 }
 
+function resetDisplayColor(e){
+    display.classList.remove("displayHighlight");
+}
+
+function keyToggle(e){
+    console.log(e);
+    const btn = (e.key == "Backspace") ? 
+        document.querySelector(`div[data-key="Delete"]`):
+        document.querySelector(`div[data-key="${e.key}"]`);
+    
+    if(btn == null) {
+        return;
+    } else if(e.type=="keydown") {
+        btn.click();
+        btn.classList.add("highlight");
+    } else {
+        btn.classList.remove("highlight");
+    }
+}
+
 document.querySelectorAll(".button").forEach(
     e => e.addEventListener("click", clicked)
 );
 
 const display = document.getElementById("displayText");
+display.addEventListener("transitionend", resetDisplayColor);
+document.addEventListener("keydown", keyToggle);
+document.addEventListener("keyup", keyToggle);
+
+
+
 
 function isTyping() {
     if(calc.curN == "" || calc.curN == "-") {

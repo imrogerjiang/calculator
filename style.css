@@ -48,6 +48,7 @@
     display: flex;
     align-items: center;
 
+    color: var(--display-text-color);
     background-color: var(--display-bg-color);
     border: 3px solid var(--border-color);
 }
@@ -55,7 +56,6 @@
     border-color: var(--highlight-color);
 }
 #display p{
-    color: var(--display-text-color);
     font: 35px "Varela Round", sans-serif;
     width: 95%; /* Changes the spacing between text and right display edge */
     margin: 0;
@@ -73,6 +73,13 @@
 }
 
 /* Classes */
+.displayText{
+    transition: all 1s ease;
+}
+.displayHighlight{
+    color: var(--highlight-color);
+    transition: all 0.01s ease;
+}
 .button{
     font: 25px "Varela Round", sans-serif;
 
@@ -87,7 +94,7 @@
     justify-content: center;
     align-items: center;
 }
-.button:hover{
+.button:hover, .button.highlight{
     filter:brightness(1.1);
     border-color: var(--highlight-color);
 }
@@ -95,7 +102,7 @@
     color: var(--special-text-color);
     background-color: var(--special-bg-color);
 }
-.specialButton:hover{
+.specialButton:hover, .specialButton.highlight{
     filter: brightness(1.2);
 }
 .equalsButton{
@@ -103,7 +110,7 @@
     background-color: var(--equals-bg-color);
     grid-column: 4/6;
 }
-.equalsButton:hover{
+.equalsButton:hover, .equalsButton.highlight{
     filter: brightness(1);
     background-color: var(--highlight-color);
 }
